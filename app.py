@@ -33,3 +33,16 @@ def chiashopping():
 @app.route("/Chia/Naturaleza")
 def chianatu():
     return render_template('Chia/Recreacion.html')
+
+@app.route("/Chia/EntendimientoDelNegocio")
+def entendimiento():
+    return render_template('Chia/EntendimientoDelNegocio.html')
+
+@app.route("/Chia/IngenieriaDatos")
+def IngenieriaDatos():
+    return render_template('Chia/IngenieriaDatos.html')
+
+@app.route("/Chia/IngenieriaModelo")
+def IngenieriaModelo():
+    return render_template('Chia/IngenieriaModelo.html')
+

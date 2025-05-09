@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='estiloschia.css') }}">
     <script src="{{ url_for('static', filename='librochia.js') }}" defer></script>
 </head>
-<body>
 
+<body>
     <!-- Contenedor General -->
     <div style="display: flex; flex-direction: column; align-items: center;">
         <header class="main-header">
@@ -46,8 +46,12 @@
                 </button>
             </div>
         </header>
-        
-
+    <div class="extra-buttons" style="margin-top: 20px;">
+      <button onclick="location.href='/Chia/EntendimientoDelNegocio'" class="extra-button">Entendimiento del Negocio y Datos</button>
+      <button onclick="location.href='/Chia/IngenieriaDatos'" class="extra-button">Ingenieria de Datos</button>
+      <button onclick="location.href='/Chia/IngenieriaModelo'" class="extra-button">Ingenieria del Modelo</button>
+      <button onclick="location.href='/Chia/IngenieriaModelo'" class="extra-button">Evaluación del Modelo</button>
+    </div>
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <!-- Previous Button -->
         <button id="prev-btn">

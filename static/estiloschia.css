@@ -430,3 +430,25 @@ p {
     font-size: 1rem;
     color: #555;
 }
+
+.extra-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.extra-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.extra-button:hover {
+    background-color: #1c5980;
+}
