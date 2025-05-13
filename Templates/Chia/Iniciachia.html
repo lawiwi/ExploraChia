@@ -11,41 +11,20 @@
 </head>
 
 <body>
-    <!-- Contenedor General -->
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <header class="main-header">
-            <h1>¿Qué hacer en Chía?</h1>
-            <div class="header-content">
-                <img src="/static/logoe.png" alt="Logo entretenimiento Chía" class="header-logo" style="width: 180px; height: auto; margin-right: 20px;">
-                    <p class="subtitle">Descubre las mejores opciones de entretenimiento, comida y aventura</p>
-            </div>
-            <div class="button-container">
-                <button class = "category-button comida" onclick="location.href='/Chia/Restaurantes'">
-                    Comida y Bebida
-                    <span>Restaurantes, cafés y bares</span>
-                </button>
-                <button class = "category-button arte" onclick="location.href='/Chia/Arte'">
-                    Arte y Cultura
-                    <span>Museos, galerías y eventos</span>
-                </button>
-                <button class = "category-button nat" onclick="location.href='/Chia/Naturaleza'">
-                    Naturaleza
-                    <span>Parques y espacios al aire libre</span>
-                </button>
-                <button class = "category-button ocio" onclick="location.href='/Chia/Ocio'">
-                    Ocio y Entretenimiento
-                    <span>Cines, teatros y diversión</span>
-                </button>
-                <button class = "category-button depo" onclick="location.href='/Chia/Deportes'">
-                    Deportes
-                    <span>Actividades deportivas</span>
-                </button>
-                <button class = "category-button shop" onclick="location.href='/Chia/Shopping'">
-                    Compras
-                    <span>Centros comerciales y tiendas</span>
-                </button>
-            </div>
-        </header>
+
+  <!-- HEADER PRINCIPAL -->
+  <header class="main-header-style1">
+    <img src="{{ url_for('static', filename='logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
+    <span class="header-title-style1">ExploraChía</span>
+  </header>
+
+
+  <!-- Contenedor General -->
+  <div style="display: flex; flex-direction: column; align-items: center;">
+      <header class="main-header">
+
+      </header>
+        
     <div class="extra-buttons" style="margin-top: 20px;">
       <button onclick="location.href='/Chia/EntendimientoDelNegocio'" class="extra-button">Entendimiento del Negocio y Datos</button>
       <button onclick="location.href='/Chia/IngenieriaDatos'" class="extra-button">Ingenieria de Datos</button>
