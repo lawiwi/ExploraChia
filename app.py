@@ -34,15 +34,18 @@ def chiashopping():
 def chianatu():
     return render_template('Chia/Recreacion.html')
 
-@app.route("/Chia/EntendimientoDelNegocio")
+@app.route("/Chia/Acercade/EntendimientoDelNegocio")
 def entendimiento():
-    return render_template('Chia/EntendimientoDelNegocio.html')
+    return render_template('Machine/EntendimientoDelNegocio.html')
 
-@app.route("/Chia/IngenieriaDatos")
+@app.route("/Chia/Acercade/IngenieriaDatos")
 def IngenieriaDatos():
-    return render_template('Chia/IngenieriaDatos.html')
+    return render_template('Machine/IngenieriaDatos.html')
 
-@app.route("/Chia/IngenieriaModelo")
+@app.route("/Chia/Acercade/IngenieriaModelo")
 def IngenieriaModelo():
-    return render_template('Chia/IngenieriaModelo.html')
+    return render_template('Machine/IngenieriaModelo.html')
 
+@app.route("/Chia/Acercade")
+def Acercade():
+    return render_template('Machine/Acercade.html')
