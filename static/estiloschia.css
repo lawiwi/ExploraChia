@@ -285,7 +285,7 @@ button:active i {
     width: 100%;
     margin-top: 70px;
     background: 
-        url('/static/chiaaaa.jpg') center/cover no-repeat; /* Imagen de fondo con gradiente superpuesto */
+        url('/static/img/chiaaaa.jpg') center/cover no-repeat; /* Imagen de fondo con gradiente superpuesto */
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-bottom: 5px solid #a9c8b2;
