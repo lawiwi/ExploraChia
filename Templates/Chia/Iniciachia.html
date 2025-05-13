@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book</title>
+    <title>ExploraChia</title>
     <script src="https://kit.fontawesome.com/50956a932a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='estiloschia.css') }}">
     <script src="{{ url_for('static', filename='librochia.js') }}" defer></script>
@@ -16,21 +16,35 @@
   <header class="main-header-style1">
     <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
     <span class="header-title-style1">ExploraChía</span>
+
+    <div class="header-buttons">
+      <a href="/empresario" class="header-btn">¿Eres Empresario?</a>
+      <a href="/Chia/Acercade" class="header-btn">Acerca de este proyecto</a>
+    </div>
   </header>
+
+  <!-- BARRA DE NAVEGACIÓN TIPO PESTAÑA -->
+  <nav class="nav-tabs">
+    <a href="/Chia/Restaurantes" class="tab">Restaurantes</a>
+    <a href="/Chia/Arte" class="tab">Arte</a>
+    <a href="/Chia/Ocio" class="tab">Ocio</a>
+  </nav>
 
 
   <!-- Contenedor General -->
   <div style="display: flex; flex-direction: column; align-items: center;">
-      <header class="main-header">
+    <section class="intro-horizontal">
+        <img src="{{ url_for('static', filename='img/logoe.png') }}" alt="Logo ExploraChia" class="logo-horizontal">
+        <div class="intro-box">
+          <div class="intro-text">
+            <h2>¡Bienvenido a Explora Chia!</h2>
+            <p>
+              <strong>En Explora Chia,</strong> te conectamos con los mejores lugares de entretenimiento en la ciudad, desde actividades sociales hasta experiencias deportivas. Explora, comparte tus opiniones y descubre eventos exclusivos diseñados para ti. Además, las empresas locales tienen la oportunidad de conocer las preferencias de los jóvenes y mejorar su oferta, todo a través de datos y recomendaciones personalizadas. <br>¡Descubre, diviértete y forma parte de una comunidad activa y dinámica en Chía!
+            </p>
+          </div>
+        </div>
+    </section>
 
-      </header>
-        
-    <div class="extra-buttons" style="margin-top: 20px;">
-      <button onclick="location.href='/Chia/EntendimientoDelNegocio'" class="extra-button">Entendimiento del Negocio y Datos</button>
-      <button onclick="location.href='/Chia/IngenieriaDatos'" class="extra-button">Ingenieria de Datos</button>
-      <button onclick="location.href='/Chia/IngenieriaModelo'" class="extra-button">Ingenieria del Modelo</button>
-      <button onclick="location.href='/Chia/IngenieriaModelo'" class="extra-button">Evaluación del Modelo</button>
-    </div>
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <!-- Previous Button -->
         <button id="prev-btn">
