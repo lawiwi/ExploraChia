@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de</title>
+    <script src="https://kit.fontawesome.com/50956a932a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='EstiloAcercade.css') }}">
+</head>
+
+<body>
+
+  <!-- HEADER PRINCIPAL -->
+  <header class="main-header-style1">
+    <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
+    <span class="header-title-style1">ExploraChía</span>
+
+    <div class="header-buttons">
+      <a href="/empresario" class="header-btn">¿Eres Empresario?</a>
+      <a href="/" class="header-btn">Catalogos Explora Chía</a>
+    </div>
+  </header>
+
+    <!-- BLOQUE DE INTRODUCCIÓN -->
+    <section class="intro-horizontal">
+        <img src="{{ url_for('static', filename='img/logoe.png') }}" alt="Logo ExploraChia" class="logo-horizontal">
+
+        <div class="intro-text">
+            <h2>Sobre Este Proyecto</h2>
+            <p>
+                <strong>EcoMarket</strong> es una plataforma que conecta a recolectores de residuos electrónicos con empresas generadoras de RAEE. Facilitamos la gestión sostenible de residuos a través de servicios eficientes, promoviendo la economía circular y un entorno más limpio.
+            </p>
+        </div>
+
+        <img src="{{ url_for('static', filename='img/fondo.png') }}" alt="Gestión de residuos" class="intro-image">
+    </section>
+
+    <div class="main-buttons-container">
+      <button onclick="location.href='/Chia/Acercade/EntendimientoDelNegocio'" class="main-btn">Entendimiento del Negocio y Datos</button>
+      <button onclick="location.href='/Chia/Acercade/IngenieriaDatos'" class="main-btn">Ingenieria de Datos</button>
+      <button onclick="location.href='/Chia/Acercade/IngenieriaModelo'" class="main-btn">Ingenieria del Modelo</button>
+      <button onclick="location.href='/Chia/Acercade/IngenieriaModelo'" class="main-btn">Evaluación del Modelo</button>
+    </div>
+
+
+</body>
