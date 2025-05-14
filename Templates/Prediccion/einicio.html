@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acerca de</title>
-    <script src="https://kit.fontawesome.com/50956a932a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='EstiloAcercade.css') }}">
+    <title>ExploraChia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='EstiloEmpresas.css') }}">
 </head>
 
 <body>
-
+    
   <!-- HEADER PRINCIPAL -->
   <header class="main-header-style1">
     <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
     <span class="header-title-style1">ExploraChía</span>
 
     <div class="header-buttons">
-      <a href="/Chia/Empresas" class="header-btn">¿Eres Empresario?</a>
+      <a href="/Chia/Acercade" class="header-btn">Acerca de este proyecto</a>
       <a href="/" class="header-btn">Catalogos Explora Chía</a>
     </div>
   </header>
@@ -27,21 +26,13 @@
       <img src="{{ url_for('static', filename='img/logoe.png') }}" alt="Logo ExploraChia" class="logo-horizontal">
 
       <div class="intro-text">
-          <h2>Sobre Este Proyecto</h2>
+          <h2>¡Bienvenido Empresario!</h2>
           <p>
             <strong>En esta pestaña</strong> encontrarás una descripción general del proyecto desde una perspectiva académica y metodológica. Se presenta la metodología CRISP-ML, el Objetivos de Desarrollo Sostenible (ODS) relacionado, una introducción al enfoque del proyecto y los objetivos principales que guiaron su desarrollo. Esta sección permite comprender el contexto, propósito y estructura técnica del trabajo realizado.
           </p>
       </div>
 
-      <img src="https://www.claseejecutiva.com.mx/wp-content/uploads/2022/10/machine-learning-proyecto-exitoso-machine-learning.jpg" alt="MachineLearning" class="intro-image">
+      <img src="https://www.repsol.com/content/dam/repsol-corporate/es/energia-e-innovacion/robot-machine-learning.jpg.transform/rp-rendition-sm/image.jpg  " alt="MachineLearning" class="intro-image">
   </section>
-
-    <div class="main-buttons-container">
-      <button onclick="location.href='/Chia/Acercade/EntendimientoDelNegocio'" class="main-btn">Entendimiento del Negocio y Datos</button>
-      <button onclick="location.href='/Chia/Acercade/IngenieriaDatos'" class="main-btn">Ingenieria de Datos</button>
-      <button onclick="location.href='/Chia/Acercade/IngenieriaModelo'" class="main-btn">Ingenieria del Modelo</button>
-      <button onclick="location.href='/Chia/Acercade/IngenieriaModelo'" class="main-btn">Evaluación del Modelo</button>
-    </div>
-
 
 </body>

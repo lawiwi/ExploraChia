@@ -91,3 +91,24 @@ function goPrevPage() {
         currentLocation--;
     }
 }
+
+document.querySelectorAll('.store-card').forEach(card => {
+  card.addEventListener('click', async (event) => {
+    event.preventDefault();
+
+    const empresa = card.getAttribute('data-empresa');
+    const destino = card.getAttribute('href');
+
+    try {
+      await fetch('/registrar_click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ empresa })
+      });
+    } catch (err) {
+      console.error('Error registrando el clic:', err);
+    }
+
+    window.open(destino, '_blank'); // o location.href = destino;
+  });
+});

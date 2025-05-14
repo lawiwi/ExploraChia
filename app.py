@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, jsonify
+from datetime import datetime
 import sqlite3
-
+import csv
+import os
 
 app = Flask(__name__, template_folder='Templates')
 
@@ -9,6 +11,30 @@ app = Flask(__name__, template_folder='Templates')
 @app.route("/")
 def chiaentre():
     return render_template('Chia/iniciachia.html')
+
+@app.route("/registrar_click", methods=["POST"])
+def registrar_click():
+    data = request.get_json()
+    empresa = data.get("empresa")
+
+    if not empresa:
+        return jsonify({"error": "No se proporcionó el nombre de la empresa"}), 400
+
+    # Obtener fecha actual
+    fecha_actual = datetime.now().date()
+
+    # Ruta del archivo CSV para la empresa
+    ruta_csv = f"data/{empresa}.csv"
+
+    # Verificar si el archivo existe, si no, crearlo con encabezados
+    archivo_nuevo = not os.path.exists(ruta_csv)
+    with open(ruta_csv, mode="a", newline="", encoding="utf-8") as archivo:
+        writer = csv.writer(archivo)
+        if archivo_nuevo:
+            writer.writerow(["publishedAtDate", "comentario"])  # encabezados mínimos
+        writer.writerow([fecha_actual.strftime, "registro click"])
+
+    return jsonify({"mensaje": f"Click registrado para {empresa} en {fecha_actual}"})
 
 @app.route("/Chia/Restaurantes")
 def chiacomida():
@@ -49,3 +75,7 @@ def IngenieriaModelo():
 @app.route("/Chia/Acercade")
 def Acercade():
     return render_template('Machine/Acercade.html')
+
+@app.route("/Chia/Empresas")
+def Empresas():
+    return render_template('Prediccion/einicio.html')
