@@ -68,6 +68,17 @@ body {
     
 }
 
+.intro-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 80px 10px;
+    background-color: #d1d9f8;
+    flex-wrap: wrap;
+    
+}
+
 .logo-horizontal,
 .intro-image {
     height: 250px; 
