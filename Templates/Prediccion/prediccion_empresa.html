@@ -1,55 +1,36 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predicciones de {{ empresa }}</title>
-    <link rel="stylesheet" href="static/EstiloEmpresas.css">
+    <title>Predicción - {{ empresa }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='EstiloEmpresas.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="{{ url_for('static', filename='predicciones.js') }}" defer></script>
 </head>
 <body>
+
+    <!-- HEADER PRINCIPAL -->
     <header class="main-header-style1">
-        <img src="static/logoe.png" alt="Logo" class="header-logo-style1">
-        <h1 class="header-title-style1">Predicciones de Visitas: {{ empresa }}</h1>
+        <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
+        <span class="header-title-style1">ExploraChía</span>
+
+        <div class="header-buttons-style1">
+        <a href="/Chia/Acercade" class="header-btn-style1">Acerca de este proyecto</a>
+        <a href="/" class="header-btn-style1">Catalogos Explora Chía</a>
+        </div>
     </header>
 
-    <div class="intro-horizontal">
-        <div class="intro-text">
-            <h2>Información de {{ empresa }}</h2>
-            <p>Centro comercial con variedad de tiendas, restaurantes, y más.</p>
-            <p><strong>Teléfono:</strong> {{ empresa_data["telefono"] }}</p>
-            <p><strong>Dirección:</strong> {{ empresa_data["direccion"] }}</p>
-            <p><strong>Rango de Precios:</strong> {{ empresa_data["rango_precios"] }}</p>
-        </div>
+    <header class="main-header-style1">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="header-logo-style1">
+        <div class="header-title-style1">Predicción de Visitas</div>
+    </header>
 
-        <div class="intro-image">
-            <img src="{{ empresa_data["imagen_url"] }}" alt="Imagen de {{ empresa }}" class="intro-image">
-        </div>
-    </div>
-
-    <div class="predicciones">
-        <h3>Predicciones de Visitas</h3>
-        <p>Este gráfico muestra las predicciones de visitas por día de la semana.</p>
-
-        <!-- Aquí iría el gráfico (usaremos un gráfico de ejemplo con Chart.js) -->
-        <canvas id="prediccionesGraph" width="400" height="200"></canvas>
-
-        <script>
-            var ctx = document.getElementById('prediccionesGraph').getContext('2d');
-            var prediccionesData = {{ predicciones | tojson }};
-            var prediccionesChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: prediccionesData.dias_semana,
-                    datasets: [{
-                        label: 'Visitas Predichas',
-                        data: prediccionesData.visitas_predichas,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                }
-            });
-        </script>
+    <div style="margin-top: 100px; text-align: center;">
+        <h2>Empresa seleccionada: {{ empresa|capitalize }}</h2>
+        <p>Aquí aparecerá el gráfico de visitas próximamente.</p>
     </div>
 </body>
 </html>
