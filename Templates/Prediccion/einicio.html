@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExploraChia</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='EstiloEmpresas.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="{{ url_for('static', filename='predicciones.js') }}" defer></script>
 </head>
 
 <body>
@@ -15,9 +18,9 @@
     <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
     <span class="header-title-style1">ExploraChía</span>
 
-    <div class="header-buttons">
-      <a href="/Chia/Acercade" class="header-btn">Acerca de este proyecto</a>
-      <a href="/" class="header-btn">Catalogos Explora Chía</a>
+    <div class="header-buttons-style1">
+      <a href="/Chia/Acercade" class="header-btn-style1">Acerca de este proyecto</a>
+      <a href="/" class="header-btn-style1">Catalogos Explora Chía</a>
     </div>
   </header>
 
@@ -34,5 +37,56 @@
 
       <img src="https://www.repsol.com/content/dam/repsol-corporate/es/energia-e-innovacion/robot-machine-learning.jpg.transform/rp-rendition-sm/image.jpg  " alt="MachineLearning" class="intro-image">
   </section>
+  
+  <!-- BOTONES -->
+    <div class="header-buttons">
+        <button class="header-btn" id="todosBtn">Todos</button>
+        <button class="header-btn" id="comidaBtn">Comida</button>
+        <button class="header-btn" id="ocioBtn">Ocio</button>
+        <button class="header-btn" id="deportesBtn">Deportes</button>
+    </div>
+
+    <div class="categories">
+        <div class="category" id="comida" style="display: none;">
+            <h2>Comida</h2>
+            <div class="company">
+                <img src="comida1.jpg" alt="Comida Empresa 1">
+                <p>Restaurante XYZ</p>
+            </div>
+            <div class="company">
+                <img src="comida2.jpg" alt="Comida Empresa 2">
+                <p>Restaurante ABC</p>
+            </div>
+        </div>
+        
+        <div class="category" id="ocio" style="display: none;">
+            <h2>Ocio</h2>
+            <div class="company">
+                <a href="{{ url_for('predicciones_empresa', empresa='fontanar') }}">
+                    <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2025/02/MISIONV-MOBILE.png" alt="Centro Comercial Fontanar">
+                    <p>Centro Comercial Fontanar</p>
+                </a>
+            </div>
+            <div class="company">
+                <a href="{{ url_for('predicciones_empresa', empresa='centro_chia') }}">
+                    <img src="centro_chia_imagen.jpg" alt="Centro Comercial Centro Chía">
+                    <p>Centro Comercial Centro Chía</p>
+                </a>
+            </div>
+        </div>
+        
+        <div class="category" id="deportes" style="display: none;">
+            <h2>Deportes</h2>
+            <div class="company">
+                <img src="deportes1.jpg" alt="Deportes Empresa 1">
+                <p>Gimnasio XYZ</p>
+            </div>
+            <div class="company">
+                <img src="deportes2.jpg" alt="Deportes Empresa 2">
+                <p>Estadio ABC</p>
+            </div>
+        </div>
+    </div>
+
 
 </body>

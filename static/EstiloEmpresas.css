@@ -29,7 +29,7 @@ body {
     font-weight: bold;
 }
 
-.header-buttons {
+.header-buttons-style1 {
     margin-left: auto; /* Empuja los botones a la derecha */
     display: flex;
     gap: 10px;
@@ -37,7 +37,7 @@ body {
     margin-top: 25px;
 }
 
-.header-btn {
+.header-btn-style1 {
     text-decoration: none;
     background-color: white;
     color: #4c98af;
@@ -52,7 +52,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.header-btn:hover {
+.header-btn-style1:hover {
     background-color: #e0f0f7;
 }
 
@@ -90,4 +90,79 @@ body {
 .intro-image {
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Categorías y empresas */
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+    margin-top: 80px;
+}
+
+.category h2 {
+    font-size: 24px;
+    color: #4c98af;
+}
+
+.category .company {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f4f7fa;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category .company img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.category .company p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Cuando se muestra la categoría */
+.category {
+    display: none;
+}
+
+.category.active {
+    display: block;
+}
+
+/* Centrado y estilo de los botones de categoría */
+.header-buttons {
+    margin-left: auto; 
+    margin-right: auto; /* Centra los botones */
+    display: flex;
+    gap: 20px;
+    margin-top: 40px; /* Para darle un poco de espacio arriba */
+    justify-content: center; /* Asegura que los botones estén centrados */
+    flex-wrap: wrap;
+}
+
+.header-btn {
+    text-decoration: none;
+    background-color: #4c98af;
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Aumenta el tamaño del botón */
+    border-radius: 8px;
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    font-weight: bold;
+    cursor: pointer;
+    height: auto; /* Ajuste automático de altura */
+    width: auto;
+    transition: background-color 0.3s;
+}
+
+.header-btn:hover {
+    background-color: #6ab3c3; /* Color más claro al pasar el mouse */
 }

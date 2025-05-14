@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicciones de {{ empresa }}</title>
+    <link rel="stylesheet" href="static/EstiloEmpresas.css">
+</head>
+<body>
+    <header class="main-header-style1">
+        <img src="static/logoe.png" alt="Logo" class="header-logo-style1">
+        <h1 class="header-title-style1">Predicciones de Visitas: {{ empresa }}</h1>
+    </header>
+
+    <div class="intro-horizontal">
+        <div class="intro-text">
+            <h2>Información de {{ empresa }}</h2>
+            <p>Centro comercial con variedad de tiendas, restaurantes, y más.</p>
+            <p><strong>Teléfono:</strong> {{ empresa_data["telefono"] }}</p>
+            <p><strong>Dirección:</strong> {{ empresa_data["direccion"] }}</p>
+            <p><strong>Rango de Precios:</strong> {{ empresa_data["rango_precios"] }}</p>
+        </div>
+
+        <div class="intro-image">
+            <img src="{{ empresa_data["imagen_url"] }}" alt="Imagen de {{ empresa }}" class="intro-image">
+        </div>
+    </div>
+
+    <div class="predicciones">
+        <h3>Predicciones de Visitas</h3>
+        <p>Este gráfico muestra las predicciones de visitas por día de la semana.</p>
+
+        <!-- Aquí iría el gráfico (usaremos un gráfico de ejemplo con Chart.js) -->
+        <canvas id="prediccionesGraph" width="400" height="200"></canvas>
+
+        <script>
+            var ctx = document.getElementById('prediccionesGraph').getContext('2d');
+            var prediccionesData = {{ predicciones | tojson }};
+            var prediccionesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: prediccionesData.dias_semana,
+                    datasets: [{
+                        label: 'Visitas Predichas',
+                        data: prediccionesData.visitas_predichas,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>

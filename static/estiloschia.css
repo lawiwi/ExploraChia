@@ -20,7 +20,7 @@
 
 /* Aplica la animación a todo el contenido principal */
 .intro-horizontal,
-.main-header-style1,.nav-tabs {
+.main-header-style1,.nav-tab {
     animation: fadeInUp 1.2s ease-out forwards;
 }
 
