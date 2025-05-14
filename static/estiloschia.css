@@ -5,6 +5,25 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ANIMACIÓN */
+/* Animación suave de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplica la animación a todo el contenido principal */
+.intro-horizontal,
+.main-header-style1,.nav-tab {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
 /* HEADER PRINCIPAL */
 .main-header-style1 {
     background-color: #4c98af;
