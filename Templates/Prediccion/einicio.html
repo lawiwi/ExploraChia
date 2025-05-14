@@ -59,19 +59,17 @@
             </div>
         </div>
         
-        <div class="category" id="ocio" style="display: none;">
+        <div class="tarjetas-contenedor" id="ocio" style="display: none;">
             <h2>Ocio</h2>
-            <div class="company">
-                <a href="{{ url_for('predicciones_empresa', empresa='fontanar') }}">
-                    <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2025/02/MISIONV-MOBILE.png" alt="Centro Comercial Fontanar">
-                    <p>Centro Comercial Fontanar</p>
-                </a>
+            <div class="tarjeta-servicio">
+                <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2023/01/Foto-Fachada.jpg" alt="Centro Comercial Fontanar">
+                <h3>Centro Comercial Fontanar</h3>
+                <a href="{{ url_for('predicciones_empresa', empresa='fontanar') }}" class="boton-servicio">Ver Predicciones</a>
             </div>
-            <div class="company">
-                <a href="{{ url_for('predicciones_empresa', empresa='centro_chia') }}">
-                    <img src="centro_chia_imagen.jpg" alt="Centro Comercial Centro Chía">
-                    <p>Centro Comercial Centro Chía</p>
-                </a>
+            <div class="tarjeta-servicio">
+                <img src="https://obycon.com/wp-content/uploads/2022/02/Parque-Centro-Chia-2.jpg" alt="Centro Comercial Centro Chía">
+                <h3>Centro Comercial Centro Chía</h3>
+                <a href="{{ url_for('predicciones_empresa', empresa='centro_chia') }}" class="boton-servicio">Ver Predicciones</a>
             </div>
         </div>
         
