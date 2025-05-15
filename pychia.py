@@ -6,7 +6,7 @@ from sklearn.metrics import mean_absolute_error
 
 # ---------Cargar y procesar datos--------------------------------------------------------------------------------------------#
 # Cargar CSV
-df = pd.read_csv("data/datafontanar.csv")
+df = pd.read_csv("data/fontanar.csv")
 
 # Convertir la fecha ISO a datetime
 df["publishedAtDate"] = pd.to_datetime(df["publishedAtDate"])
