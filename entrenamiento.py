@@ -1,12 +1,16 @@
 import os
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Esto previene errores con Tkinter en Flask
 import matplotlib.pyplot as plt
+
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 import joblib
-
+from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
+import io
 
 meses_alta = [6, 7, 12, 1]  # Junio, Julio, Diciembre, Enero
 
@@ -31,7 +35,8 @@ for file in csv_files:
     df["dia_semana_num"] = df["publishedAtDate"].dt.weekday
     df["mes"] = df["publishedAtDate"].dt.month
     df["temporada_alta"] = df["mes"].apply(es_temporada_alta)
-    df["visitas"] = np.where(df["publishAt"] == "registro click", 0.5, 1)
+    df["visitas"] = np.where(df["publishAt"] == "registro click", 1, 5)
+    df["visitas"] *= 50
 
     # Agrupar por día
     df_agrupado = df.groupby(["fecha", "dia_semana", "dia_semana_num", "mes", "temporada_alta"]).agg({"visitas": "sum"}).reset_index()
@@ -53,3 +58,37 @@ for file in csv_files:
     ruta_modelo = os.path.join("modelos", f"modelo_{nombre_empresa}.pkl")
     joblib.dump(modelo, ruta_modelo)
     print(f"Modelo guardado en: {ruta_modelo}")
+
+def generar_grafico_prediccion_semanal(empresa):
+    modelo_path = os.path.join('modelos', f'modelo_{empresa}.pkl')
+    if not os.path.exists(modelo_path):
+        raise FileNotFoundError(f"No se encontró el modelo para {empresa}")
+
+    modelo = joblib.load(modelo_path)
+
+    # Crear el DataFrame con características esperadas por el modelo
+    dias = pd.DataFrame({
+        'dia_semana_num': range(7),
+        'mes': [6]*7,  # Puedes ajustar el mes si quieres mostrar un mes actual o promedio
+        'temporada_alta': [1 if 6 in [6, 7, 12, 1] else 0]*7
+    })
+
+    predicciones = modelo.predict(dias)
+
+    nombres_dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+    
+    carpeta_salida = os.path.join('static', 'plots')
+    os.makedirs(carpeta_salida, exist_ok=True)
+
+    ruta_imagen = os.path.join(carpeta_salida, f'grafico_{empresa}.png')
+
+    plt.figure(figsize=(10, 5))
+    plt.bar(nombres_dias, predicciones, color='#4c98af')
+    plt.title(f'Predicción de visitas por día - {empresa}')
+    plt.ylabel('Visitas estimadas')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(ruta_imagen)
+    plt.close()
+
+    return ruta_imagen

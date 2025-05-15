@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, send_file, jsonify
+from entrenamiento import generar_grafico_prediccion_semanal
 from datetime import datetime
-import sqlite3
 import csv
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from io import BytesIO
-from flask import Flask, render_template, request, jsonify, send_file
 import joblib
 
 app = Flask(__name__, template_folder='Templates')
@@ -19,8 +18,16 @@ def chiaentre():
     return render_template('Chia/iniciachia.html')
 
 @app.route('/prediccion/<empresa>')
-def mostrar_prediccion(empresa):
-    return render_template('Prediccion/prediccion_empresa.html', empresa=empresa)
+def prediccion_empresa(empresa):
+    ruta_imagen = generar_grafico_prediccion_semanal(empresa)
+
+    if not ruta_imagen:
+        return f"No se encontró el modelo para {empresa}", 404
+
+    imagen_url = '/' + ruta_imagen.replace("\\", "/")  # Convertir a URL válida
+
+    return render_template('Prediccion/prediccion_empresa.html',empresa=empresa, imagen_url=imagen_url)
+
 
 @app.route("/registrar_click", methods=["POST"])
 def registrar_click():

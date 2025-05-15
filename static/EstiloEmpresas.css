@@ -257,3 +257,18 @@ body {
 .tarjeta-servicio .boton-servicio:hover {
   background-color: #1b5e20;
 }
+
+
+.matriz-container {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    }
+.matriz-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}

@@ -32,5 +32,12 @@
         <h2>Empresa seleccionada: {{ empresa|capitalize }}</h2>
         <p>Aquí aparecerá el gráfico de visitas próximamente.</p>
     </div>
+
+    <h1>Predicción de visitas para {{ empresa }}</h1>
+    <img src="{{ imagen_url }}" alt="Gráfico de visitas">
+
+    <h2 style="text-align: center;">Predicción semanal de visitas para {{ empresa }}</h2>
+    <img src="{{ imagen_url }}" alt="Gráfico de visitas por día" style="display:block; margin:auto; width: 70%; max-width: 600px;">
+
 </body>
 </html>
