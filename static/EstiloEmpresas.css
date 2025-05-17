@@ -187,8 +187,9 @@ body {
 }
 
 .tarjetas-contenedor h2 {
-    font-size: 24px;
-    color: #4c98af;
+  margin: 0 0 16px 0; 
+  padding: 0;
+  width: auto; 
 }
 
 .tarjeta-servicio {
