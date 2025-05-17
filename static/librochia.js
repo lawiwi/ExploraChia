@@ -106,7 +106,7 @@ document.querySelectorAll('.store-card').forEach(card => {
         body: JSON.stringify({ empresa })
       });
     } catch (err) {
-      console.error('Error registrando el clic:', err);
+      console.error('Error registrando el click:', err);
     }
 
     window.open(destino, '_blank'); // o location.href = destino;

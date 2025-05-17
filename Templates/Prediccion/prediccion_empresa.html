@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="{{ url_for('static', filename='predicciones.js') }}" defer></script>
+    <script>
+        const empresa = "{{ empresa }}";  // ahora JS conoce el nombre de la empresa
+    </script>
+
 </head>
 <body>
 
@@ -28,16 +33,11 @@
         <div class="header-title-style1">Predicción de Visitas</div>
     </header>
 
-    <div style="margin-top: 100px; text-align: center;">
-        <h2>Empresa seleccionada: {{ empresa|capitalize }}</h2>
-        <p>Aquí aparecerá el gráfico de visitas próximamente.</p>
-    </div>
-
     <h1>Predicción de visitas para {{ empresa }}</h1>
     <img src="{{ imagen_url }}" alt="Gráfico de visitas">
 
-    <h2 style="text-align: center;">Predicción semanal de visitas para {{ empresa }}</h2>
-    <img src="{{ imagen_url }}" alt="Gráfico de visitas por día" style="display:block; margin:auto; width: 70%; max-width: 600px;">
-
+    <div id="detalle-visitas" style="margin-top: 30px;">
+        <!-- Aquí se mostrará el detalle del día -->
+    </div>
 </body>
 </html>

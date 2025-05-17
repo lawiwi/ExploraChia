@@ -17,16 +17,14 @@ app = Flask(__name__, template_folder='Templates')
 def chiaentre():
     return render_template('Chia/iniciachia.html')
 
-@app.route('/prediccion/<empresa>')
+@app.route('/prediccion/<empresa>', methods=['GET'])
 def prediccion_empresa(empresa):
     ruta_imagen = generar_grafico_prediccion_semanal(empresa)
-
     if not ruta_imagen:
         return f"No se encontró el modelo para {empresa}", 404
 
-    imagen_url = '/' + ruta_imagen.replace("\\", "/")  # Convertir a URL válida
-
-    return render_template('Prediccion/prediccion_empresa.html',empresa=empresa, imagen_url=imagen_url)
+    imagen_url = '/' + ruta_imagen.replace("\\", "/")
+    return render_template('Prediccion/prediccion_empresa.html', empresa=empresa, imagen_url=imagen_url)
 
 
 @app.route("/registrar_click", methods=["POST"])

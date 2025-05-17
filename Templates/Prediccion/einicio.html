@@ -47,20 +47,45 @@
     </div>
 
     <div class="categories">
-        <div class="category" id="comida" style="display: none;">
-            <h2>Comida</h2>
-            <div class="company">
-                <img src="comida1.jpg" alt="Comida Empresa 1">
-                <p>Restaurante XYZ</p>
+        <div class="tarjetas-contenedor" id="comida" style="display: grid;">
+            <div class="tarjeta-servicio">
+                <img src="https://ugc.production.linktr.ee/1ToCv3vwQsSSpt8m1Iqu_Captura%20de%20Pantalla%202021-11-15%20a%20la(s)%203.37.31%20p.%C2%A0m..png?io=true&size=thumbnail-stack-v1_0" alt="El Galapago Campestre">
+                <h3>El Galapago Campestre</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='galapagoc') }}" class="boton-servicio">Ver Predicciones</a>
             </div>
-            <div class="company">
-                <img src="comida2.jpg" alt="Comida Empresa 2">
-                <p>Restaurante ABC</p>
+
+            <div class="tarjeta-servicio">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO0kHs1cpyaqbBmNyhpiQl4nM-O3hqJpnsEQ&s" alt="Celestina">
+                <h3>Celestina</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='celestina') }}" class="boton-servicio">Ver Predicciones</a>
+            </div>
+
+                <div class="tarjeta-servicio">
+                <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2023/01/Foto-Fachada.jpg" alt="Centro Comercial Fontanar">
+                <h3>Centro Comercial Fontanar</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='fontanar') }}" class="boton-servicio">Ver Predicciones</a>
+            </div>
+
+            <div class="tarjeta-servicio">
+                <img src="https://obycon.com/wp-content/uploads/2022/02/Parque-Centro-Chia-2.jpg" alt="Centro Comercial Centro Chía">
+                <h3>Centro Comercial Centro Chía</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='centrochia') }}" class="boton-servicio">Ver Predicciones</a>
             </div>
         </div>
-        
-        <div class="tarjetas-contenedor" id="ocio" style="display: none;">
-            <h2>Ocio</h2>
+
+        <div class="tarjetas-contenedor" id="ocio" style="display: grid;">
+            <div class="tarjeta-servicio">
+                <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2023/01/Foto-Fachada.jpg" alt="Centro Comercial Fontanar">
+                <h3>Centro Comercial Fontanar</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='fontanar') }}" class="boton-servicio">Ver Predicciones</a>
+            </div>
+
+            <div class="tarjeta-servicio">
+                <img src="https://obycon.com/wp-content/uploads/2022/02/Parque-Centro-Chia-2.jpg" alt="Centro Comercial Centro Chía">
+                <h3>Centro Comercial Centro Chía</h3>
+                <a href="{{ url_for('prediccion_empresa', empresa='centrochia') }}" class="boton-servicio">Ver Predicciones</a>
+            </div>
+
             <div class="tarjeta-servicio">
                 <img src="https://fontanarcentrocomercial.com/wp-content/uploads/2023/01/Foto-Fachada.jpg" alt="Centro Comercial Fontanar">
                 <h3>Centro Comercial Fontanar</h3>
@@ -75,7 +100,6 @@
         </div>
         
         <div class="category" id="deportes" style="display: none;">
-            <h2>Deportes</h2>
             <div class="company">
                 <img src="deportes1.jpg" alt="Deportes Empresa 1">
                 <p>Gimnasio XYZ</p>
@@ -86,6 +110,4 @@
             </div>
         </div>
     </div>
-
-
 </body>

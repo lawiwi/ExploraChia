@@ -105,49 +105,14 @@ body {
 
 /* Categorías y empresas */
 .categories {
-    display: flex;
+    display: grid;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     padding: 50px;
     margin-top: 80px;
     flex-wrap: wrap;
 }
 
-.category h2 {
-    font-size: 24px;
-    color: #4c98af;
-}
-
-.category .company {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f4f7fa;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.category .company img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.category .company p {
-    font-size: 18px;
-    color: #555;
-}
-
-/* Cuando se muestra la categoría */
-.category {
-    display: none;
-}
-
-.category.active {
-    display: block;
-}
 
 /* Centrado y estilo de los botones de categoría */
 .header-buttons {
@@ -176,7 +141,7 @@ body {
 }
 
 .header-btn:hover {
-    background-color: #6ab3c3; /* Color más claro al pasar el mouse */
+    background-color: #6ab3c3; 
 }
 
 /* TARJETAS */
@@ -185,6 +150,8 @@ body {
   padding-bottom: 20px;
   background-color: #f0fdf4;
   text-align: center;
+  display: none;
+  flex-direction: row;
 }
 
 .filtro-botones {
@@ -211,64 +178,52 @@ body {
 }
 
 .tarjetas-contenedor {
-  display: grid; /* Usamos grid */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Asegura que las tarjetas se ajusten en filas */
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px; /* Añadimos un pequeño padding para no pegar las tarjetas a los bordes */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tarjetas-contenedor h2 {
+    font-size: 24px;
+    color: #4c98af;
 }
 
 .tarjeta-servicio {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding-bottom: 20px;
-  transition: transform 0.3s ease;
-  text-align: center;
-  width: 100%; /* Esto asegura que las tarjetas se ajusten al 100% del contenedor */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .tarjeta-servicio img {
-  width: 100%;
-  height: 200px; /* Altura de imagen ajustada */
-  object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .tarjeta-servicio h3 {
-  font-size: 18px;
-  margin: 15px 0;
-  color: #2e7d32;
+    font-size: 18px;
+    margin: 15px 0;
+    color: #2e7d32;
 }
 
-.tarjeta-servicio .boton-servicio {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #2e7d32;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-  margin-bottom: 15px;
+.boton-servicio {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.tarjeta-servicio .boton-servicio:hover {
-  background-color: #1b5e20;
-}
-
-
-.matriz-container {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-    }
-.matriz-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
+.boton-servicio:hover {
+    background-color: #1b5e20;
 }

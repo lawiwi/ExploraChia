@@ -4,13 +4,11 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Esto previene errores con Tkinter en Flask
 import matplotlib.pyplot as plt
-
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 import joblib
-from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
-import io
+from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 meses_alta = [6, 7, 12, 1]  # Junio, Julio, Diciembre, Enero
 
@@ -51,8 +49,6 @@ for file in csv_files:
 
     # Evaluar
     y_pred = modelo.predict(X_test)
-    mae = mean_absolute_error(y_test, y_pred)
-    print(f"MAE para {nombre_empresa}: {mae:.2f}")
 
     # Guardar modelo
     ruta_modelo = os.path.join("modelos", f"modelo_{nombre_empresa}.pkl")
@@ -92,3 +88,4 @@ def generar_grafico_prediccion_semanal(empresa):
     plt.close()
 
     return ruta_imagen
+
