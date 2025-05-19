@@ -19,25 +19,36 @@
 
     <!-- HEADER PRINCIPAL -->
     <header class="main-header-style1">
-        <img src="{{ url_for('static', filename='/img/logoe.png') }}" alt="Logo de ExploraChia" class="header-logo-style1">
-        <span class="header-title-style1">ExploraChía</span>
+        <img src="{{ url_for('static', filename='img/logoe.png') }}" class="header-logo-style1">
+        <div class="header-title-style1">ExploraChía</div>
 
         <div class="header-buttons-style1">
-        <a href="/Chia/Acercade" class="header-btn-style1">Acerca de este proyecto</a>
-        <a href="/" class="header-btn-style1">Catalogos Explora Chía</a>
+            <a href="/Chia/Acercade" class="header-btn-style1">Acerca de este proyecto</a>
+            <a href="/" class="header-btn-style1">Catálogos Explora Chía</a>
         </div>
     </header>
 
-    <header class="main-header-style1">
-        <img src="{{ url_for('static', filename='logoe.png') }}" class="header-logo-style1">
-        <div class="header-title-style1">Predicción de Visitas</div>
-    </header>
+    <!-- Contenedor principal -->
+    <div style="margin-top: 100px; padding: 40px; text-align: center;">
 
-    <h1>Predicción de visitas para {{ empresa }}</h1>
-    <img src="{{ imagen_url }}" alt="Gráfico de visitas">
+        <!-- Título destacado -->
+        <h1 style="font-size: 36px; color: #2e337d; margin-bottom: 20px;">
+            Predicción de visitas para {{ empresa }}
+        </h1>
 
-    <div id="detalle-visitas" style="margin-top: 30px;">
-        <!-- Aquí se mostrará el detalle del día -->
+        <!-- Párrafo introductorio -->
+        <p style="font-size: 18px; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.6;">
+            A continuación, se muestra una gráfica con las predicciones estimadas de visitas por día de la semana al sitio de <strong>{{ empresa }}</strong>. 
+            Esta información te ayudará a conocer los días con mayor afluencia de visitantes y planificar estrategias comerciales más efectivas.
+        </p>
+
+        <!-- Imagen de la predicción -->
+        <img src="{{ imagen_url }}" alt="Gráfico de visitas" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+
+        <!-- Contenedor para detalles del día -->
+        <div id="detalle-visitas" style="margin-top: 40px;">
+            <!-- Aquí se mostrará el detalle del día -->
+        </div>
     </div>
+
 </body>
-</html>
