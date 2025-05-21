@@ -236,6 +236,7 @@
             <nav>
                 <ul class="space-y-1">
                     <li><a href="#metricas-desempeño" class="nav-link">1.Metricas de Desempeño</a></li>
+                    <li><a href="#validacion-cruzada" class="nav-link">2.Validación Cruzada</a></li>
                     <li><a href="#analisis-riesgos" class="nav-link">3.Analisis de Riesgos</a></li>
                     <li><a href="#subajuste-riegos" class="nav-link ml-4 block px-3 py-2 text-sm text-slate-500 hover:bg-sky-50 hover:text-sky-600 rounded-md transition-colors duration-150">3.1. Subajuste</a></li>
                     <li><a href="#sobreajuste-riegos" class="nav-link ml-4 block px-3 py-2 text-sm text-slate-500 hover:bg-sky-50 hover:text-sky-600 rounded-md transition-colors duration-150">3.2. SobreAjuste</a></li>
@@ -274,22 +275,63 @@
                             <select name="empresa">
                             <option value="centrochia">Centro Chía</option>
                             <option value="fontanar">Fontanar</option>
-                            <option value="celestina">Restaurante Celestina/option>
+                            <option value="celestina">Restaurante Celestina</option>
                             <option value="galapagoc">Restaurante Galapago Campestre</option>
                             <option value="laspuertas">Restaurante Las Puertas</option>
-                            <option value="montañaoso">Parque la Montaña del Oso/option>
-                            <option value="parquecentrochia">Parque Centro Chia/option>
+                            <option value="montañaoso">Parque la Montaña del Oso</option>
+                            <option value="parquecentrochia">Parque Centro Chia</option>
                             <option value="playzonevip">PlayZone VIP</option>
                             <option value="teatrofah">Teatro Fahreheint</option>
-                            <option value="tierraroja">Restaurante Tierra Roja/option>
+                            <option value="tierraroja">Restaurante Tierra Roja</option>
                             </select>
                             <button type="submit">Ver Métricas</button>
                         </form>
                     </div>
                 </div>
             </section>
+            
+            <section id="validacion-cruzada" class="content-card pastel-indigo">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-x-6"> 
+                    <div class="md:w-2/3 text-content">
+                        <h2 class="section-title">Validacion Cruzada</h2>
+                        <p>
+                            En este proyecto se utilizó validación cruzada de 5 particiones para estimar el error del modelo en nuevos datos, asegurando que las métricas reportadas no dependan de una única división entrenamiento/prueba.
+                        </p>
+                    </div>
+                    <div class="image-placeholder-container md:w-1/3">
+                        <div class="image-placeholder">
 
-            <section id="aanalisis-riesgos" class="content-card pastel-indigo">
+                         <img src="https://miro.medium.com/v2/resize:fit:1400/1*0apWuaTKNZa2CW_mzxtFyw.png" 
+                         alt="">
+                        </div>
+                    </div>
+            </section>
+
+
+            <section class="content-card pastel-indigo">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-x-6"> 
+                    <div class="md:w-2/3 text-content">
+                        <h1>Selecciona una empresa para ver su validacion cruzada</h1>
+                        <form action="/validacion_modelo" method="post">
+                            <select name="empresa">
+                            <option value="centrochia">Centro Chía</option>
+                            <option value="fontanar">Fontanar</option>
+                            <option value="celestina">Restaurante Celestina</option>
+                            <option value="galapagoc">Restaurante Galapago Campestre</option>
+                            <option value="laspuertas">Restaurante Las Puertas</option>
+                            <option value="montañaoso">Parque la Montaña del Oso</option>
+                            <option value="parquecentrochia">Parque Centro Chia</option>
+                            <option value="playzonevip">PlayZone VIP</option>
+                            <option value="teatrofah">Teatro Fahreheint</option>
+                            <option value="tierraroja">Restaurante Tierra Roja</option>
+                            </select>
+                            <button type="submit">Ver Validacion</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analisis-riesgos" class="content-card pastel-indigo">
                 <h2 class="section-title">3. Análisis de Riesgos</h2>
                  <div class="md:flex md:space-x-8 items-start mb-8">
                      <div class="md:w-2/3">

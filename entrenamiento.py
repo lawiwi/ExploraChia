@@ -8,8 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 import joblib
-from sklearn.metrics import accuracy_score, precision_score, recall_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.model_selection import cross_val_score
 import json
 
 meses_alta = [6, 7, 12, 1]  # Junio, Julio, Diciembre, Enero
@@ -42,6 +42,22 @@ def evaluar_y_guardar_modelo(modelo, X_test, y_test, empresa):
     with open(f'metricas_modelos/{empresa}.json', 'w') as f:
         json.dump(resultados, f)
 
+def realizar_validacion_cruzada(modelo, X, y, empresa):
+    scores = cross_val_score(modelo, X, y, cv=5, scoring='neg_mean_squared_error')
+    rmse_scores = np.sqrt(-scores)
+    
+    print(f"Validación cruzada (RMSE) para {empresa}: {rmse_scores}")
+    print(f"RMSE promedio para {empresa}: {round(np.mean(rmse_scores), 2)}")
+
+    # Guardar los resultados de la validación cruzada
+    resultados_cv = {
+        "RMSE_folds": [round(s, 2) for s in rmse_scores],
+        "RMSE_promedio": round(np.mean(rmse_scores), 2)
+    }
+
+    os.makedirs('metricas_modelos', exist_ok=True)
+    with open(f'metricas_modelos/validacion_cruzada_{empresa}.json', 'w') as f:
+        json.dump(resultados_cv, f)
 
 # Recorrer cada archivo CSV
 for file in csv_files:
@@ -69,6 +85,8 @@ for file in csv_files:
 
     modelo = RandomForestRegressor(n_estimators=100, random_state=42)
     modelo.fit(X_train, y_train)
+
+    realizar_validacion_cruzada(modelo, X, y, nombre_empresa)
 
     # Evaluar
     y_pred = modelo.predict(X_test)

@@ -36,6 +36,11 @@ def evaluar_modelo():
     empresa = request.form['empresa']
     return redirect(url_for('mostrar_metricas', empresa=empresa))
 
+@app.route('/validacion_modelo', methods=['POST'])
+def validacion_modelo():
+    empresa = request.form['empresa']
+    return redirect(url_for('validacion_cruzada', empresa=empresa))
+
 @app.route('/metricas/<empresa>')
 def mostrar_metricas(empresa):
     ruta_json = f'metricas_modelos/{empresa}.json'
@@ -46,6 +51,22 @@ def mostrar_metricas(empresa):
         metricas = {"error": "No se encontraron métricas para esta empresa."}
 
     return render_template('Machine/metricasempresa.html', empresa=empresa, metricas=metricas)
+
+
+@app.route('/validacion_cruzada/<empresa>')
+def validacion_cruzada(empresa):
+    ruta_json = f'metricas_modelos/validacion_cruzada_{empresa}.json'
+
+    if not os.path.exists(ruta_json):
+        return f"No se encontraron datos de validación cruzada para {empresa}", 404
+
+    with open(ruta_json, 'r') as f:
+        datos = json.load(f)
+
+    return render_template('Machine/validacioncruzada.html',
+                           empresa=empresa,
+                           rmse_folds=datos['RMSE_folds'],
+                           rmse_promedio=datos['RMSE_promedio'])
 
 @app.route("/registrar_click", methods=["POST"])
 def registrar_click():
