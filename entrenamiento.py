@@ -13,7 +13,6 @@ from sklearn.model_selection import cross_val_score
 import json
 
 meses_alta = [6, 7, 12, 1]  # Junio, Julio, Diciembre, Enero
-
 # Obtener todos los archivos CSV en la carpeta data/
 data_folder = "data"
 csv_files = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
