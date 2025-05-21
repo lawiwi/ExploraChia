@@ -236,7 +236,9 @@
             <nav>
                 <ul class="space-y-1">
                     <li><a href="#metricas-desempeño" class="nav-link">1.Metricas de Desempeño</a></li>
-                    <li><a href="#analisis-riesgos" class="nav-link">2.Analisis de Riesgos</a></li>
+                    <li><a href="#analisis-riesgos" class="nav-link">3.Analisis de Riesgos</a></li>
+                    <li><a href="#subajuste-riegos" class="nav-link ml-4 block px-3 py-2 text-sm text-slate-500 hover:bg-sky-50 hover:text-sky-600 rounded-md transition-colors duration-150">3.1. Subajuste</a></li>
+                    <li><a href="#sobreajuste-riegos" class="nav-link ml-4 block px-3 py-2 text-sm text-slate-500 hover:bg-sky-50 hover:text-sky-600 rounded-md transition-colors duration-150">3.2. SobreAjuste</a></li>
                 </ul>
             </nav>
         </aside>
@@ -272,8 +274,14 @@
                             <select name="empresa">
                             <option value="centrochia">Centro Chía</option>
                             <option value="fontanar">Fontanar</option>
-                            <option value="parqueaventura">Parque Aventura</option>
-                            <!-- Agrega más según los archivos .json -->
+                            <option value="celestina">Restaurante Celestina/option>
+                            <option value="galapagoc">Restaurante Galapago Campestre</option>
+                            <option value="laspuertas">Restaurante Las Puertas</option>
+                            <option value="montañaoso">Parque la Montaña del Oso/option>
+                            <option value="parquecentrochia">Parque Centro Chia/option>
+                            <option value="playzonevip">PlayZone VIP</option>
+                            <option value="teatrofah">Teatro Fahreheint</option>
+                            <option value="tierraroja">Restaurante Tierra Roja/option>
                             </select>
                             <button type="submit">Ver Métricas</button>
                         </form>
@@ -281,22 +289,56 @@
                 </div>
             </section>
 
-            <section id="analisis-riesgos" class="content-card pastel-sky">
-                <div class="flex flex-col md:flex-row items-start md:items-center gap-x-6"> 
-                    <div class="md:w-2/3 text-content">
-                        <h2 class="section-title">Analisis De Riesgos</h2>
-                        <p>
-                            Durante el desarrollo del modelo de predicción, se identificaron posibles riesgos relacionados con el sobreajuste, en el que el modelo aprende demasiado bien los datos de entrenamiento y pierde capacidad de generalización. También se consideró el subajuste, que ocurre cuando el modelo no logra captar patrones importantes en los datos, lo que afecta su rendimiento. Adicionalmente, se evaluaron posibles sesgos en los datos de entrada, que podrían influir en las predicciones y generar resultados no representativos. La identificación temprana de estos riesgos permite ajustar la complejidad del modelo, mejorar la calidad de los datos y aplicar técnicas de validación cruzada para garantizar un mejor desempeño.
-                        </p>
+            <section id="aanalisis-riesgos" class="content-card pastel-indigo">
+                <h2 class="section-title">3. Análisis de Riesgos</h2>
+                 <div class="md:flex md:space-x-8 items-start mb-8">
+                     <div class="md:w-2/3">
+                        <p>Se identificaron posibles riesgos relacionados con el sobreajuste, en el que el modelo aprende demasiado bien los datos de entrenamiento y pierde capacidad de generalización. También se consideró el subajuste, que ocurre cuando el modelo no logra captar patrones importantes en los datos, lo que afecta su rendimiento.</p>
                     </div>
-                    <div class="image-placeholder-container md:w-1/3">
-                        <div class="image-placeholder">
+                    <div class="md:w-1/3 mt-6 md:mt-0">
+                     
+                    </div>
+                </div>
 
-                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSflIAWXBQCy1S3RHfvyvrQQqTIBP_TWtSgZA&s" 
-                         alt="">
+                <article id="subajuste-riegos" class="mt-8">
+                    <div class="md:flex md:space-x-6 items-start">
+                        <div class="md:w-2/3">
+                            <h3 class="article-title">3.1. Subajuste</h3>
+                            <div class="info-card mb-4">
+                                <p class="info-card-title">Modelo con muy pocas variables predictoras</p>
+                                <p>Al inicio del proyecto, los modelos solo utilizaban la fecha o el número de comentarios diarios como entrada. Esto no capturaba información importante como el día de la semana, el mes o si era temporada alta, lo cual limita la capacidad del modelo para aprender patrones relevantes</p>
+                            </div>
+                            <div class="info-card">
+                                <p class="info-card-title">Modelo muy simple (por ejemplo, Regresión Lineal básica)</p>
+                                <p>En etapas tempranas, si se usó un modelo demasiado simple (como una regresión sin variables categóricas o sin interacciones), no se logró captar relaciones no lineales en los datos.</p>
+                            </div>
+                            <div class="info-card">
+                                <p class="info-card-title">Entrenamiento con pocos datos</p>
+                                <p>Algunos sitios tienen menos de 100 comentarios, lo cual puede haber llevado a un modelo poco entrenado que no generaliza bien.</p>
+                            </div>
                         </div>
                     </div>
-            </section>
+                </article>
+
+                <article id="sobreajuste-riegos" class="mt-8">
+                    <div class="md:flex md:space-x-6 items-start">
+                        <div class="md:w-2/3">
+                            <h3 class="article-title">3.2. Sobreajuste</h3>
+                            <div class="info-card mb-4">
+                                <p class="info-card-title">Modelo ajustado a series con pocos datos y ruido</p>
+                                <p>Si se entrenó un modelo muy complejo (como Random Forest con muchos árboles) sobre un conjunto de datos pequeño o muy específico de un sitio, este pudo aprender los “picos” de visitas de manera exacta, pero fallar al generalizar</p>
+                            </div>
+                            <div class="info-card">
+                                <p class="info-card-title">Uso excesivo de variables irrelevantes o correlacionadas</p>
+                                <p>Si se incluyeron muchas variables (por ejemplo, múltiples dummies por mes, sin regularización o selección), el modelo podría haber aprendido patrones espurios.</p>
+                            </div>
+                            <div class="info-card">
+                                <p class="info-card-title">Entrenamiento sin validación cruzada adecuada</p>
+                                <p>Si no se separaron bien los datos de entrenamiento y prueba, o no se usó una validación temporal, el modelo pudo haber aprendido los datos de entrada sin poder generalizar a nuevas fechas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
         </main>
     </div>
 
