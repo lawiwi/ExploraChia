@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, jsonify
+from flask import Flask, render_template, request, redirect, url_for,jsonify
 from entrenamiento import generar_grafico_prediccion_semanal
 from datetime import datetime
 import csv
@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from io import BytesIO
 import joblib
+import json
 
 app = Flask(__name__, template_folder='Templates')
 
@@ -26,6 +27,25 @@ def prediccion_empresa(empresa):
     imagen_url = '/' + ruta_imagen.replace("\\", "/")
     return render_template('Prediccion/prediccion_empresa.html', empresa=empresa, imagen_url=imagen_url)
 
+@app.route('/Chia/Acercade/EvaluacionModelo')
+def evaluacion():
+    return render_template('Machine/EvaluacionModelo.html')
+
+@app.route('/evaluar_modelo', methods=['POST'])
+def evaluar_modelo():
+    empresa = request.form['empresa']
+    return redirect(url_for('mostrar_metricas', empresa=empresa))
+
+@app.route('/metricas/<empresa>')
+def mostrar_metricas(empresa):
+    ruta_json = f'metricas_modelos/{empresa}.json'
+    if os.path.exists(ruta_json):
+        with open(ruta_json, 'r') as f:
+            metricas = json.load(f)
+    else:
+        metricas = {"error": "No se encontraron métricas para esta empresa."}
+
+    return render_template('Machine/metricasempresa.html', empresa=empresa, metricas=metricas)
 
 @app.route("/registrar_click", methods=["POST"])
 def registrar_click():
@@ -52,29 +72,6 @@ def registrar_click():
 
     return jsonify({"mensaje": f"Click registrado para {empresa} en {fecha_actual}"})
 
-@app.route("/Chia/Restaurantes")
-def chiacomida():
-    return render_template('Chia/Restaurantes.html')
-
-@app.route("/Chia/Arte")
-def chiaarte():
-    return render_template('Chia/Arte.html')
-
-@app.route("/Chia/Deportes")
-def chiadeportes():
-    return render_template('Chia/Deportes.html')
-
-@app.route("/Chia/Ocio")
-def chiaocio():
-    return render_template('Chia/Ocio.html')
-
-@app.route("/Chia/Shopping")
-def chiashopping():
-    return render_template('Chia/Shopping.html')
-
-@app.route("/Chia/Naturaleza")
-def chianatu():
-    return render_template('Chia/Recreacion.html')
 
 @app.route("/Chia/Acercade/EntendimientoDelNegocio")
 def entendimiento():
@@ -87,6 +84,8 @@ def IngenieriaDatos():
 @app.route("/Chia/Acercade/IngenieriaModelo")
 def IngenieriaModelo():
     return render_template('Machine/IngenieriaModelo.html')
+
+
 
 @app.route("/Chia/Acercade")
 def Acercade():

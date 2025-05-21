@@ -9,6 +9,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 import joblib
 from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import json
 
 meses_alta = [6, 7, 12, 1]  # Junio, Julio, Diciembre, Enero
 
@@ -18,6 +20,27 @@ csv_files = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
 
 def es_temporada_alta(mes):
     return 1 if mes in meses_alta else 0
+
+def evaluar_y_guardar_modelo(modelo, X_test, y_test, empresa):
+    y_pred = modelo.predict(X_test)
+
+    # Calcular métricas
+    mae = mean_absolute_error(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_test, y_pred)
+
+    # Guardar en JSON
+    resultados = {
+        "MAE": round(mae, 2),
+        "MSE": round(mse, 2),
+        "RMSE": round(rmse, 2),
+        "R2": round(r2, 4)
+    }
+
+    os.makedirs('metricas_modelos', exist_ok=True)
+    with open(f'metricas_modelos/{empresa}.json', 'w') as f:
+        json.dump(resultados, f)
 
 
 # Recorrer cada archivo CSV
@@ -55,6 +78,9 @@ for file in csv_files:
     joblib.dump(modelo, ruta_modelo)
     print(f"Modelo guardado en: {ruta_modelo}")
 
+    evaluar_y_guardar_modelo(modelo, X_test, y_test, nombre_empresa)
+    print(f"Métricas guardadas para {nombre_empresa}")
+
 def generar_grafico_prediccion_semanal(empresa):
     modelo_path = os.path.join('modelos', f'modelo_{empresa}.pkl')
     if not os.path.exists(modelo_path):
@@ -89,3 +115,23 @@ def generar_grafico_prediccion_semanal(empresa):
 
     return ruta_imagen
 
+def evaluar_y_guardar_modelo(modelo, X_test, y_test, empresa):
+    y_pred = modelo.predict(X_test)
+
+    # Calcular métricas
+    mae = mean_absolute_error(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_test, y_pred)
+
+    # Guardar en JSON
+    resultados = {
+        "MAE": round(mae, 2),
+        "MSE": round(mse, 2),
+        "RMSE": round(rmse, 2),
+        "R2": round(r2, 4)
+    }
+
+    os.makedirs('metricas_modelos', exist_ok=True)
+    with open(f'metricas_modelos/{empresa}.json', 'w') as f:
+        json.dump(resultados, f)
